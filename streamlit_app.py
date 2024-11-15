@@ -1,3 +1,6 @@
+# Question and Answer on a Given Topic 
+# Topic file is uploaded as a Text
+
 import streamlit as st
 from openai import OpenAI
 
@@ -33,10 +36,10 @@ else:
         disabled=not uploaded_file,
     )"""
     st.write("upload a file before you can ask a Question.")
-    if uploaded_file:  # Ensure the input is only enabled if a file is uploaded
-        question = st.chat_input("Now ask a question about the document!")
+    
+    question = st.chat_input("Now ask a question about the document!")
 
-    if question:
+    if uploaded_file & question:
 
         # Process the uploaded file and question.
         document = uploaded_file.read().decode()
@@ -49,7 +52,7 @@ else:
 
         # Generate an answer using the OpenAI API.
         stream = client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model="gpt-4o-mini",
             messages=messages,
             stream=True,
         )
