@@ -36,10 +36,8 @@ else:
         disabled=not uploaded_file,
     )"""
     st.write("upload a file before you can ask a Question.")
-    if question := st.chat_input("What is up?"):
-   
-        if uploaded_file:
-    
+    if uploaded_file:
+        if question := st.chat_input("What is up?"):
             # Process the uploaded file and question.
             document = uploaded_file.read().decode()
             messages = [
