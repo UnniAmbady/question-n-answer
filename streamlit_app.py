@@ -36,26 +36,25 @@ else:
         disabled=not uploaded_file,
     )"""
     st.write("upload a file before you can ask a Question.")
+    if question := st.chat_input("What is up?"):
+   
+        if uploaded_file:
     
-    question = st.chat_input("Now ask a question about the document!")
-
-    if uploaded_file & question:
-
-        # Process the uploaded file and question.
-        document = uploaded_file.read().decode()
-        messages = [
-            {
-                "role": "user",
-                "content": f"Here's a document: {document} \n\n---\n\n {question}",
-            }
-        ]
-
-        # Generate an answer using the OpenAI API.
-        stream = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=messages,
-            stream=True,
-        )
-
-        # Stream the response to the app using `st.write_stream`.
-        st.write_stream(stream)
+            # Process the uploaded file and question.
+            document = uploaded_file.read().decode()
+            messages = [
+                {
+                    "role": "user",
+                    "content": f"Here's a document: {document} \n\n---\n\n {question}",
+                }
+            ]
+    
+            # Generate an answer using the OpenAI API.
+            stream = client.chat.completions.create(
+                model="gpt-4o-mini",
+                messages=messages,
+                stream=True,
+            )
+    
+            # Stream the response to the app using `st.write_stream`.
+            st.write_stream(stream)
