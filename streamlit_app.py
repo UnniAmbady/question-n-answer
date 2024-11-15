@@ -34,8 +34,8 @@ else:
     #    "Now ask a question about the document!",
     #    placeholder="Can you give me a short summary?",
     #    disabled=not uploaded_file,)
-    
-    st.write("upload a file before you can ask a Question.")
+    if not uploaded_file:
+        st.write("upload a file before you can ask a Question.")
     if uploaded_file:
         if question := st.chat_input("What is up?"):
             # Process the uploaded file and question.
