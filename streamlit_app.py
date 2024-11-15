@@ -26,12 +26,12 @@ else:
     )
 
     # Ask the user for a question via `st.text_area`.
-    '''
+    """
     question = st.text_area(
         "Now ask a question about the document!",
         placeholder="Can you give me a short summary?",
         disabled=not uploaded_file,
-    )'''
+    )"""
     st.write("upload a file before you can ask a Question.")
     if uploaded_file:  # Ensure the input is only enabled if a file is uploaded
         question = st.chat_input("Now ask a question about the document!")
