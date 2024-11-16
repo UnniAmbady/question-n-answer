@@ -25,10 +25,8 @@ def AskQn():
     # Conditionally avoid redundant parsing of the file
     if not document:
         document = uploaded_file.read().decode()
-    messages = [
-                {"role": "user",
-                 "content": f"Here's a document: {document} \n\n---\n\n {query}",
-                }
+    messages =  [{"role": "user",
+                 "content": f"Here's a document: {document} \n\n---\n\n {query}",}
                 ]
                 # Generate an answer using the OpenAI API.
     stream = client.chat.completions.create(
@@ -77,12 +75,9 @@ else:
         if question := st.chat_input("What is up?"):
             # Process the uploaded file and question.
             document = uploaded_file.read().decode()
-            messages = [
-                {
-                    "role": "user",
-                    "content": f"Here's a document: {document} \n\n---\n\n {question}",
-                }
-            ]
+            messages =  [{"role": "user",
+                        "content": f"Here's a document: {document} \n\n---\n\n {question}",}
+                        ]
     
             # Generate an answer using the OpenAI API.
             stream = client.chat.completions.create(
