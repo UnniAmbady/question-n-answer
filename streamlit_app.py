@@ -15,6 +15,8 @@ st.write("Lecturer to Upload a document "
 
 # Define a global variable
 query = "Create a Question with a model answer"
+document = None  # Initially set to None to indicate no document is uploaded
+
 # Define the function to be called when the button is clicked
 def AskQn():
     # Placeholder for future implementation
