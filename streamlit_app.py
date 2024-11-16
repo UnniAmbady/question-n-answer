@@ -22,7 +22,7 @@ def AskQn():
     # Placeholder for future implementation
     global document, query  # Access the global variables
     # Conditionally avoid redundant parsing of the file
-    if not document and uploaded_file:
+    if not document:
         document = uploaded_file.read().decode()
     messages = [
                 {"role": "user",
