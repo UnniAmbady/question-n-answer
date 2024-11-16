@@ -12,8 +12,7 @@ st.write("Lecturer to Upload a document. "
 # Create a checkbox with the label "Agile Approach"
 if st.checkbox("Agile Approach"):
     # Display a popup-like message
-    st.warning("This software is under development\n
-    using Agile Apprch. ")
+    st.warning("This software is under development\nusing Agile Apprch. ")
     
 # Ask user for their OpenAI API key via `st.text_input`.
 # Alternatively, you can store the API key in `./.streamlit/secrets.toml` and access it
