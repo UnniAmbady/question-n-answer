@@ -61,8 +61,9 @@ else:
     uploaded_file = st.file_uploader(
         "Upload a document (.txt or .md)", type=("txt", "md")
     )
-    if st.button("Ask Question"):
-        AskQn()
+    if uploaded_file:
+        if st.button("Ask Question"):
+            AskQn()
     
     
     # Ask the user for a question via `st.text_area`.
