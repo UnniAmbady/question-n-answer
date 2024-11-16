@@ -20,7 +20,26 @@ document = None  # Initially set to None to indicate no document is uploaded
 # Define the function to be called when the button is clicked
 def AskQn():
     # Placeholder for future implementation
+    global document, query  # Access the global variables
+    # Conditionally avoid redundant parsing of the file
+    if not document and uploaded_file:
+        document = uploaded_file.read().decode()
+    messages = [
+                {"role": "user",
+                 "content": f"Here's a document: {document} \n\n---\n\n {query}",
+                }
+                ]
+                # Generate an answer using the OpenAI API.
+    stream = client.chat.completions.create(
+                model="gpt-4o-mini",
+                messages=messages,
+                stream=True,)
+    
+    # Stream the response to the app using `st.write_stream`.
+    st.write_stream(stream)
     return  # Exits the function
+#function ended
+
 
 # openai_api_key = st.text_input("OpenAI API Key", type="password")
 openai_api_key = st.secrets["openai"]["secret_key"]
