@@ -52,8 +52,7 @@ else:
     # Streamlit app layout
     st.title("Interactive Q&A Generator")
     # Add a button that calls the AskQn() function
-    if st.button("Ask Question"):
-        AskQn()
+
         
     # OpenAI client already created.
     # client = OpenAI(api_key=openai_api_key)
@@ -62,7 +61,8 @@ else:
     uploaded_file = st.file_uploader(
         "Upload a document (.txt or .md)", type=("txt", "md")
     )
-
+    if st.button("Ask Question"):
+        AskQn()
     
     
     # Ask the user for a question via `st.text_area`.
