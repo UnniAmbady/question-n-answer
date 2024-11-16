@@ -12,6 +12,14 @@ st.write("Lecturer to Upload a document "
 # Ask user for their OpenAI API key via `st.text_input`.
 # Alternatively, you can store the API key in `./.streamlit/secrets.toml` and access it
 # via `st.secrets`, see https://docs.streamlit.io/develop/concepts/connections/secrets-management
+
+# Define a global variable
+query = "Create a Question with a model answer"
+# Define the function to be called when the button is clicked
+def AskQn():
+    # Placeholder for future implementation
+    return  # Exits the function
+
 # openai_api_key = st.text_input("OpenAI API Key", type="password")
 openai_api_key = st.secrets["openai"]["secret_key"]
 client = OpenAI(api_key=openai_api_key)
@@ -19,7 +27,12 @@ client = OpenAI(api_key=openai_api_key)
 if not client:
     st.info("Please add your OpenAI API key to continue.", icon="🗝️")
 else:
-
+    # Streamlit app layout
+    st.title("Interactive Q&A Generator")
+    # Add a button that calls the AskQn() function
+    if st.button("Ask Question"):
+        AskQn()
+        
     # OpenAI client already created.
     # client = OpenAI(api_key=openai_api_key)
 
@@ -28,9 +41,10 @@ else:
         "Upload a document (.txt or .md)", type=("txt", "md")
     )
 
+    
+    
     # Ask the user for a question via `st.text_area`.
-   
-    #question = st.text_area(
+       #question = st.text_area(
     #    "Now ask a question about the document!",
     #    placeholder="Can you give me a short summary?",
     #    disabled=not uploaded_file,)
