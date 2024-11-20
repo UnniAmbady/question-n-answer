@@ -46,8 +46,6 @@ def extract_question_and_answer(stream):
 #end of parsing
 
 
-
-
 # Define the function to be called when the button is clicked
 def AskQn():
     # Placeholder for future implementation
@@ -64,10 +62,10 @@ def AskQn():
                 messages=messages,
                 stream=False,)
     st.write_stream(stream)
-    st.write("Stream type:*******", type(stream))
-    st.write("Stream value:*******", stream)
+    #st.write("Stream type:*******", type(stream))
+    #st.write("Stream value:*******", stream)
 
-    # q,a =extract_question_and_answer(stream)
+    #q,a =extract_question_and_answer(stream)
 ###
     
     return  # Exits the function
