@@ -31,38 +31,20 @@ import re
 import json
 
 def extract_question_and_answer(stream):
-    """
-    Extracts and splits a message string from a ChatGPT stream object into two parts:
-    'my_question' and 'my_answer', based on the keywords 'Question:' and 'Model Answer:'.
-
-    Args:
-        stream: The object containing the ChatGPT response (can be dict-like or custom).
-
-    Returns:
-        tuple: A tuple (my_question, my_answer) containing the extracted question and answer.
-    """
-    try:
-        # Safely access 'choices' and 'message' fields in case of custom object
-        choices = getattr(stream, "choices", None) or stream.get("choices", [{}])
-        message = getattr(choices[0], "message", None) or choices[0].get("message", {})
-        content = getattr(message, "content", None) or message.get("content", "")
-
-        # Ensure 'Question:' and 'Model Answer:' exist in the content
-        if "Question:" in content and "Model Answer:" in content:
-            # Split based on 'Question:' and 'Model Answer:'
-            question_part = content.split("Question:", 1)[1]
-            answer_part = question_part.split("Model Answer:", 1)
-            
-            # Extract the question and answer, stripping whitespace
-            my_question = answer_part[0].strip()
-            my_answer = answer_part[1].strip() if len(answer_part) > 1 else ""
-            
-            return my_question, my_answer
-        else:
-            raise ValueError("Content does not contain 'Question:' or 'Model Answer:' keywords.")
+    # Remove all characters including and after "refusal="
+    stream = stream.split("refusal=")[0]
     
-    except Exception as e:
-        raise ValueError(f"Failed to parse stream object: {e}")
+    # Extract the string after "**Model Answer:**"
+    my_answer = None
+    if "**Model Answer:**" in stream:
+        my_answer = stream.split("**Model Answer:**", 1)[1].strip()
+    
+    # Extract the string after "content='**Question:**"
+    my_question = None
+    if "content='**Question:**" in stream:
+        my_question = stream.split("content='**Question:**", 1)[1].strip()
+    
+    return my_answer, my_question
 #end of parsing
 
 
