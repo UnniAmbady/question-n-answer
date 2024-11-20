@@ -69,10 +69,10 @@ def AskQn():
                 model="gpt-4o-mini",
                 messages=messages,
                 stream=False,)
-    st.write_stream(stream)
+    st.write_stream(stream[choices][0]["message"]["content"])
     
     try:
-        question, answer = parse_chatgpt_response(stream)
+        #question, answer = parse_chatgpt_response(stream)
         #st.write("QQ:")
         #st.write(question)
         #st.write("\nAA:")
