@@ -68,7 +68,7 @@ def AskQn():
     stream = client.chat.completions.create(
                 model="gpt-4o-mini",
                 messages=messages,
-                stream=True,)
+                stream=False,)
     st.write_stream(stream)
     
     try:
