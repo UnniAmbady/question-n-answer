@@ -25,17 +25,30 @@ uploaded_file = None  # Define uploaded_file globally
 
 #parse
 # Function to parse the input string
-def parse_question_answer(text):
-    # Split the string into two parts based on the keywords
-    parts = text.split("Model Answer:")
-    if len(parts) != 2:
-        raise ValueError("Input text does not contain both 'Question:' and 'Model Answer:' parts.")
+import re
+import json
+
+def parse_chatgpt_response(response):
+    # Extract the main content from the nested structure
+    match = re.search(r'content="(.+?)", refusal=None', response, re.DOTALL)
+    if not match:
+        raise ValueError("Content not found in the response.")
     
-    # Extract the question and answer parts, removing the "Question:" keyword
-    question_part = parts[0].replace("Question:", "").strip()
-    answer_part = parts[1].strip()
+    content = match.group(1)
     
-    return question_part, answer_part
+    # Extract the question and model answer
+    question_match = re.search(r'\*\*Question:\*\*\s*(.+?)\n\n', content, re.DOTALL)
+    answer_match = re.search(r'\*\*Model Answer:\*\*\s*(.+)', content, re.DOTALL)
+    
+    if not question_match or not answer_match:
+        raise ValueError("Could not find the question or model answer in the content.")
+    
+    # Clean up and return the extracted values
+    question = question_match.group(1).strip()
+    answer = answer_match.group(1).strip()
+    return question, answer
+#end of parsing
+
 
 
 
@@ -54,11 +67,14 @@ def AskQn():
                 model="gpt-4o-mini",
                 messages=messages,
                 stream=False,)
-    #q,a = parse_question_answer(stream)
-    # Stream the response to the app using `st.write_stream`.
-    #st.write_stream(q_n_a)
-    st.write(stream)
-    #st.write(a)
+    try:
+    question, answer = parse_chatgpt_response(response)
+    st.write("QQ:")
+    st.write(question)
+    st.write("\nAA:")
+    st.write(answer)
+except ValueError as e:
+    st.write(f"Error: {e}" )
     return  # Exits the function
 #function ended
 
