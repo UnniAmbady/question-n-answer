@@ -68,7 +68,7 @@ def AskQn():
                 messages=messages,
                 stream=False,)
     try:
-        question, answer = parse_chatgpt_response(response)
+        question, answer = parse_chatgpt_response(stream)
         st.write("QQ:")
         st.write(question)
         st.write("\nAA:")
