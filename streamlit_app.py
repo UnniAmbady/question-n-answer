@@ -30,25 +30,33 @@ uploaded_file = None  # Define uploaded_file globally
 import re
 import json
 
-def parse_chatgpt_response(response):
-    # Extract the main content from the nested structure
-    match = re.search(r'content="(.+?)", refusal=None', response, re.DOTALL)
-    if not match:
-        raise ValueError("Content not found in the response.")
+def extract_question_and_answer(stream):
+    """
+    Extracts and splits a message string from a JSON stream object into two parts: 
+    'my_question' and 'my_answer', based on the keywords 'Question:' and 'Model Answer:'.
     
-    content = match.group(1)
+    Args:
+        stream (dict): The JSON object containing the ChatGPT response.
+
+    Returns:
+        tuple: A tuple (my_question, my_answer) containing the extracted question and answer.
+    """
+    # Extract the 'message' content from the stream object
+    message = stream.get("choices", [{}])[0].get("message", {}).get("content", "")
     
-    # Extract the question and model answer
-    question_match = re.search(r'\*\*Question:\*\*\s*(.+?)\n\n', content, re.DOTALL)
-    answer_match = re.search(r'\*\*Model Answer:\*\*\s*(.+)', content, re.DOTALL)
-    
-    if not question_match or not answer_match:
-        raise ValueError("Could not find the question or model answer in the content.")
-    
-    # Clean up and return the extracted values
-    question = question_match.group(1).strip()
-    answer = answer_match.group(1).strip()
-    return question, answer
+    # Ensure 'Question:' and 'Model Answer:' exist in the message
+    if "Question:" in message and "Model Answer:" in message:
+        # Split based on 'Question:' and 'Model Answer:'
+        question_part = message.split("Question:", 1)[1]
+        answer_part = question_part.split("Model Answer:", 1)
+        
+        # Extract the question and answer, stripping whitespace
+        my_question = answer_part[0].strip()
+        my_answer = answer_part[1].strip() if len(answer_part) > 1 else ""
+        
+        return my_question, my_answer
+    else:
+        raise ValueError("Message does not contain 'Question:' or 'Model Answer:' keywords.")
 #end of parsing
 
 
@@ -68,9 +76,9 @@ def AskQn():
     stream = client.chat.completions.create(
                 model="gpt-4o-mini",
                 messages=messages,
-                stream=True,)
+                stream=False,)
     st.write_stream(stream)
-    
+    q,a =extract_question_and_answer(stream)
 ###
     
     return  # Exits the function
