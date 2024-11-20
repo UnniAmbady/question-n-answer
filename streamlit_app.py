@@ -66,7 +66,9 @@ def AskQn():
     stream = client.chat.completions.create(
                 model="gpt-4o-mini",
                 messages=messages,
-                stream=False,)
+                stream=True,)
+    st.write_stream(stream)
+    '''
     try:
         question, answer = parse_chatgpt_response(stream)
         st.write("QQ:")
@@ -75,6 +77,7 @@ def AskQn():
         st.write(answer)
     except ValueError as e:
         st.write(f"Error: {e}" )
+    '''
     return  # Exits the function
 #function ended
 
