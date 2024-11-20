@@ -71,14 +71,7 @@ def AskQn():
                 stream=False,)
     st.write_stream(stream["choices"][0]["message"]["content"])
     
-    try:
-        #question, answer = parse_chatgpt_response(stream)
-        #st.write("QQ:")
-        #st.write(question)
-        #st.write("\nAA:")
-        #st.write(answer)
-    except ValueError as e:
-        st.write(f"Error: {e}" )
+###
     
     return  # Exits the function
 #function ended
