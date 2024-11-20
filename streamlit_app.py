@@ -54,11 +54,11 @@ def AskQn():
                 model="gpt-4o-mini",
                 messages=messages,
                 stream=False,)
-    q,a = parse_question_answer(stream)
+    #q,a = parse_question_answer(stream)
     # Stream the response to the app using `st.write_stream`.
     #st.write_stream(q_n_a)
-    st.write(q)
-    st.write(a)
+    st.write(stream)
+    #st.write(a)
     return  # Exits the function
 #function ended
 
