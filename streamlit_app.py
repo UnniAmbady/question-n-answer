@@ -68,13 +68,13 @@ def AskQn():
                 messages=messages,
                 stream=False,)
     try:
-    question, answer = parse_chatgpt_response(response)
-    st.write("QQ:")
-    st.write(question)
-    st.write("\nAA:")
-    st.write(answer)
-except ValueError as e:
-    st.write(f"Error: {e}" )
+        question, answer = parse_chatgpt_response(response)
+        st.write("QQ:")
+        st.write(question)
+        st.write("\nAA:")
+        st.write(answer)
+    except ValueError as e:
+        st.write(f"Error: {e}" )
     return  # Exits the function
 #function ended
 
