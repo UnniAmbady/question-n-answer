@@ -69,7 +69,7 @@ def AskQn():
                 model="gpt-4o-mini",
                 messages=messages,
                 stream=False,)
-    st.write_stream(stream["choices"][0]["message"]["content"])
+    st.write_stream(stream)
     
 ###
     
