@@ -23,6 +23,22 @@ query = "Create a Question with a model answer"
 document = None  # Initially set to None to indicate no document is uploaded
 uploaded_file = None  # Define uploaded_file globally
 
+#parse
+# Function to parse the input string
+def parse_question_answer(text):
+    # Split the string into two parts based on the keywords
+    parts = text.split("Model Answer:")
+    if len(parts) != 2:
+        raise ValueError("Input text does not contain both 'Question:' and 'Model Answer:' parts.")
+    
+    # Extract the question and answer parts, removing the "Question:" keyword
+    question_part = parts[0].replace("Question:", "").strip()
+    answer_part = parts[1].strip()
+    
+    return question_part, answer_part
+
+
+
 # Define the function to be called when the button is clicked
 def AskQn():
     # Placeholder for future implementation
@@ -37,10 +53,12 @@ def AskQn():
     stream = client.chat.completions.create(
                 model="gpt-4o-mini",
                 messages=messages,
-                stream=True,)
-    
+                stream=False,)
+    q,a = parse_question_answer(stream)
     # Stream the response to the app using `st.write_stream`.
-    st.write_stream(stream)
+    #st.write_stream(q_n_a)
+    st.write(q)
+    st.write(a)
     return  # Exits the function
 #function ended
 
