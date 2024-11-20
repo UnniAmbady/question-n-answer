@@ -27,8 +27,6 @@ uploaded_file = None  # Define uploaded_file globally
 
 #parse
 # Function to parse the input string
-import re
-import json
 
 def extract_question_and_answer(stream):
     # Remove all characters including and after "refusal="
@@ -66,7 +64,10 @@ def AskQn():
                 messages=messages,
                 stream=False,)
     st.write_stream(stream)
-    q,a =extract_question_and_answer(stream)
+    st.write("Stream type:*******", type(stream))
+    st.write("Stream value:*******", stream)
+
+    # q,a =extract_question_and_answer(stream)
 ###
     
     return  # Exits the function
