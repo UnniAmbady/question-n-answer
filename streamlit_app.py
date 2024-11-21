@@ -60,13 +60,12 @@ def AskQn():
     stream = client.chat.completions.create(
                 model="gpt-4o-mini",
                 messages=messages,
-                stream=False,)
+                stream=True,)
     st.write_stream(stream)
     #st.write("Stream type:*******", type(stream))
     #st.write("Stream value:*******", stream)
-
     #q,a =extract_question_and_answer(stream)
-###
+    ### STOPPED for SCRUM MASTER Course 21 Nov 2024
     
     return  # Exits the function
 #function ended
