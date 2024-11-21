@@ -21,7 +21,7 @@ if st.checkbox("Agile Approach"):
 # via `st.secrets`, see https://docs.streamlit.io/develop/concepts/connections/secrets-management
 
 # Define a global variable
-query = "Create a Question with a model answer"
+query = "Create a short Question with a model answer"
 document = None  # Initially set to None to indicate no document is uploaded
 uploaded_file = None  # Define uploaded_file globally
 
@@ -53,9 +53,14 @@ def AskQn():
     # Conditionally avoid redundant parsing of the file
     if not document:
         document = uploaded_file.read().decode()
-    messages =  [{"role": "user",
-                 "content": f"Here's a document: {document} \n\n---\n\n {query}",}
-                ]
+
+    messages = [
+        {"role": "system", "content": "You are a Scrum Master Expert."},
+        {"role": "system", "content": f"Keep the scope of answering strictly within the context of the document: {document}."},
+        {"role": "system", "content": f"If a question is not within the scope of the document, respond with 'I am not sure'."},
+        {"role": "user", "content": f"Here's a document: {document} \n\n---\n\n {query}"}
+    ]
+    
                 # Generate an answer using the OpenAI API.
     stream = client.chat.completions.create(
                 model="gpt-4o-mini",
