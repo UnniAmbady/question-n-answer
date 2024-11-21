@@ -21,7 +21,7 @@ if st.checkbox("Agile Approach"):
 # via `st.secrets`, see https://docs.streamlit.io/develop/concepts/connections/secrets-management
 
 # Define a global variable
-query = "Create a short Question with a model answer"
+query = "Create a ransom Question with a model answer"
 document = None  # Initially set to None to indicate no document is uploaded
 uploaded_file = None  # Define uploaded_file globally
 
