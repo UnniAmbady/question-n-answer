@@ -66,10 +66,12 @@ def AskQn():
                 messages=messages,
                 stream=True,)
     st.write_stream(stream)
+    st.write("Next")
     response_text = ""
     for chunk in stream:
         response_text += chunk['choices'][0]['delta']['content']
     st.write(response_text)
+    
     #st.write("Stream type:*******", type(stream))
     #st.write("Stream value:*******", stream)
     #q,a =extract_question_and_answer(stream)
