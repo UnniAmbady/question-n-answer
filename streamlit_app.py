@@ -123,8 +123,8 @@ else:
         with col1:
             if st.button("Ask Question"):
                 sys_qn, sys_ans = AskQn()
-                st.write ("Check Q:", sys_qn)
-                st.write ("Check A:", sys_ans)
+                st.write ("Debug Q:", sys_qn)
+                st.write ("Debug A:", sys_ans)
                
         with col2:
             if st.button("Check Ans"):
