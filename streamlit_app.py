@@ -65,9 +65,12 @@ def AskQn():
                 model="gpt-4o-mini",
                 messages=messages,
                 stream=True,)
-    x=st.write_stream(stream)
-    st.write(type(stream))
-    st.write("Stream type:*******", type(stream))
+    st.write_stream(stream)
+    response_text = ""
+    for chunk in stream:
+        response_text += chunk['choices'][0]['delta']['content']
+    st.write(response_text)
+    #st.write("Stream type:*******", type(stream))
     #st.write("Stream value:*******", stream)
     #q,a =extract_question_and_answer(stream)
     ### STOPPED for SCRUM MASTER Course 21 Nov 2024
