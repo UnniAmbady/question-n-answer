@@ -86,7 +86,7 @@ def AskQn():
     st.write(sys_qn)
     if(not hide_ans):
         st.write(sys_ans)  
-    return  # Exits the function
+    return sys_qn, sys_ans # Exits the function
 #function ended
 
 # Add the Validate function
@@ -122,7 +122,7 @@ else:
         col1, col2 = st.columns(2)
         with col1:
             if st.button("Ask Question"):
-                AskQn()
+                sys_qn, sys_ans = AskQn()
                
         with col2:
             if st.button("Check Ans"):
