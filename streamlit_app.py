@@ -58,7 +58,7 @@ def extract_question_and_answer(generated_content):
 
 
 # Define the function to be called when the button is clicked
-def AskQn():
+def AskQn(q,a):
     # Placeholder for future implementation
     global document, query  # Access the global variables
     # Conditionally avoid redundant parsing of the file
@@ -121,7 +121,7 @@ else:
                 AskQn()
         with col2:
             if st.button("Check Ans"):
-                Validate()
+                Validate()  # to be removed
     if uploaded_file:
         if st_answer := st.chat_input("Type your Answer here"):
             Validate(st_answer)
