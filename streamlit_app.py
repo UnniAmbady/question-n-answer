@@ -129,6 +129,8 @@ else:
                 Validate()  # to be removed
     if uploaded_file:
         if st_answer := st.chat_input("Type your Answer here"):
+            st.write("Debug: sys_qn =", sys_qn)
+            st.write("Debug: sys_ans =", sys_ans)
             Validate(st_answer)
     
     # Ask the user for a question via `st.text_area`.
