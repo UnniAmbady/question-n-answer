@@ -28,21 +28,28 @@ uploaded_file = None  # Define uploaded_file globally
 #parse
 # Function to parse the input string
 
-def extract_question_and_answer(stream):
-    # Remove all characters including and after "refusal="
-    stream = stream.split("refusal=")[0]
+def extract_question_and_answer(generated_content):
+    """
+    Extracts the question and answer from a given string based on the keywords 'Question:' and 'Answer:'.
     
-    # Extract the string after "**Model Answer:**"
-    my_answer = None
-    if "**Model Answer:**" in stream:
-        my_answer = stream.split("**Model Answer:**", 1)[1].strip()
-    
-    # Extract the string after "content='**Question:**"
-    my_question = None
-    if "content='**Question:**" in stream:
-        my_question = stream.split("content='**Question:**", 1)[1].strip()
-    
-    return my_answer, my_question
+    Parameters:
+        generated_content (str): The input string containing the question and answer.
+        
+    Returns:
+        tuple: A tuple containing the question (qn) and the answer (ans).
+    """
+    try:
+        # Split the content into parts based on the keywords
+        question_part = generated_content.split("Question:", 1)[-1]
+        answer_part = question_part.split("Answer:", 1)
+        
+        # Extract the question and answer
+        qn = answer_part[0].strip()  # Question part
+        ans = answer_part[1].strip() if len(answer_part) > 1 else ""  # Answer part
+        
+        return qn, ans
+    except Exception as e:
+        raise ValueError(f"Error parsing content: {e}")
 #end of parsing
 
 
@@ -67,11 +74,10 @@ def AskQn():
                 stream=False)
     generated_content = stream.choices[0].message.content
     
-    st.write(generated_content)
-    st.write(type(generated_content))
-    #q,a =extract_question_and_answer(stream)
-    ### STOPPED for SCRUM MASTER Course 21 Nov 2024
-    
+    #st.write(generated_content)
+    q,a =extract_question_and_answer(stream)
+    st.write(q)
+    st.write(a)  
     return  # Exits the function
 #function ended
 
