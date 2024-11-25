@@ -81,8 +81,7 @@ def AskQn():
     #st.write(generated_content)
     q,a =extract_question_and_answer(generated_content)
     st.write(q)
-    if(not hide_ans)
-        st.write(a)  
+    if(not hide_ans):st.write(a)  
     return  # Exits the function
 #function ended
 
