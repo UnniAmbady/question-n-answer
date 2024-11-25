@@ -65,7 +65,8 @@ def AskQn():
                 model="gpt-4o-mini",
                 messages=messages,
                 stream=True,)
-    st.write_stream(stream)
+    x=st.write_stream(stream)
+    st.write(type(stream))
     st.write("Stream type:*******", type(stream))
     #st.write("Stream value:*******", stream)
     #q,a =extract_question_and_answer(stream)
