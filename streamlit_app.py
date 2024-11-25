@@ -120,7 +120,9 @@ else:
             if st.button("Check Ans"):
                 Validate()
     # Add a multiline text box right below the buttons
-    st_answer = st.text_area("Answer", height=60, placeholder="Your answer will appear here...")
+    st_answer = st.text_area("Answer", 
+        value="\n" * 1,  # Sets initial height to 2 lines (1 empty line plus placeholder line)
+        placeholder="Your answer will appear here..." )
     
     # Ask the user for a question via `st.text_area`.
        #question = st.text_area(
