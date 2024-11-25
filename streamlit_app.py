@@ -15,7 +15,9 @@ st.write("Lecturer to Upload a document. "
 if st.checkbox("Agile Approach"):
     # Display a popup-like message
     st.warning("This software is being developed using an Agile approach. Development will proceed in stages. The model answer will be displayed only after grading in future versions.")
-    
+hide_ans =0
+if st.checkbox("Agile Approach"):
+    hide_ans =1
 # Ask user for their OpenAI API key via `st.text_input`.
 # Alternatively, you can store the API key in `./.streamlit/secrets.toml` and access it
 # via `st.secrets`, see https://docs.streamlit.io/develop/concepts/connections/secrets-management
@@ -79,7 +81,8 @@ def AskQn():
     #st.write(generated_content)
     q,a =extract_question_and_answer(generated_content)
     st.write(q)
-    st.write(a)  
+    if(not hide_ans)
+        st.write(a)  
     return  # Exits the function
 #function ended
 
