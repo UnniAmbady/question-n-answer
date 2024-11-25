@@ -31,6 +31,7 @@ uploaded_file = None  # Define uploaded_file globally
 # Function to parse the input string
 
 def extract_question_and_answer(generated_content):
+    global q, a
     """
     Extracts the question and answer from a given string based on the keywords 'Question:' and 'Answer:'.
     
@@ -49,9 +50,9 @@ def extract_question_and_answer(generated_content):
         qn = answer_part[0].strip()  # Question part
         ans = answer_part[1].strip() if len(answer_part) > 1 else ""  # Answer part
         # Remove '**' from the question and answer
-        qn = qn.replace("**", "")
-        ans = ans.replace("**", "")
-        return qn, ans
+        q = qn.replace("**", "")
+        a = ans.replace("**", "")
+        return q, a
     except Exception as e:
         raise ValueError(f"Error parsing content: {e}")
 #end of parsing
