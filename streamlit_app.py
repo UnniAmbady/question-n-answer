@@ -21,8 +21,8 @@ if st.checkbox("Hide Answer"):
     hide_ans =1
 
 # Define a global variable
-q="" #enty string of Question
-a="" #emply String of Answer
+q="empty" #enty string of Question
+a="empty" #emply String of Answer
 query = "Create a random Question with an Answer"
 document = None  # Initially set to None to indicate no document is uploaded
 uploaded_file = None  # Define uploaded_file globally
@@ -49,9 +49,9 @@ def extract_question_and_answer(generated_content):
         qn = answer_part[0].strip()  # Question part
         ans = answer_part[1].strip() if len(answer_part) > 1 else ""  # Answer part
         # Remove '**' from the question and answer
-        qn = qn.replace("**", "")
-        ans = ans.replace("**", "")
-        return qn, ans
+        q = qn.replace("**", "")
+        a = ans.replace("**", "")
+        return q, a
     except Exception as e:
         raise ValueError(f"Error parsing content: {e}")
 #end of parsing
