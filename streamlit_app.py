@@ -75,7 +75,7 @@ def AskQn():
     generated_content = stream.choices[0].message.content
     
     #st.write(generated_content)
-    q,a =extract_question_and_answer(stream)
+    q,a =extract_question_and_answer(generated_content)
     st.write(q)
     st.write(a)  
     return  # Exits the function
