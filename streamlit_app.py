@@ -64,13 +64,11 @@ def AskQn():
     stream = client.chat.completions.create(
                 model="gpt-4o-mini",
                 messages=messages,
-                stream=True,)
-    response_text = ""
-    for chunk in stream:
-        response_text += chunk['choices'][0]['delta']['content']
-    st.write_stream(stream)
-    st.write("Next")
-    #st.write(response_text)
+                stream=False)
+    response_text =  stream['choices'][0]['message']['content']
+    #st.write_stream(stream)
+
+    st.write(response_text)
     
     #st.write("Stream type:*******", type(stream))
     #st.write("Stream value:*******", stream)
