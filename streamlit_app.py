@@ -89,7 +89,7 @@ def AskQn():
 # Add the Validate function
 def Validate():
     # Extract the data from the text_area and display using st.write
-    st.write("Validated Answer:", st.session_state.st_answer)
+    st.write(st_answer)
     return
 
 
