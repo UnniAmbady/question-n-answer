@@ -86,6 +86,10 @@ def AskQn():
     return  # Exits the function
 #function ended
 
+# Add the Validate function
+def Validate():
+    return  # Dummy function; no action
+
 
 # openai_api_key = st.text_input("OpenAI API Key", type="password")
 openai_api_key = st.secrets["openai"]["secret_key"]
@@ -107,8 +111,14 @@ else:
         "Upload a document (.txt or .md)", type=("txt", "md")
     )
     if uploaded_file:
-        if st.button("Ask Question"):
-            AskQn()
+        # Create a row with the buttons "Ask Question" and "Check Ans"
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("Ask Question"):
+                AskQn()
+        with col2:
+            if st.button("Check Ans"):
+                Validate()
     
     
     # Ask the user for a question via `st.text_area`.
