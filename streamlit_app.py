@@ -91,6 +91,7 @@ def AskQn():
 # Add the Validate function
 def Validate(st_answer):
     # Extract the data from the text_area and display using st.write
+    global sys_qn,sys_ans
     st.write(sys_qn)
     st.write(st_answer)
     return
@@ -121,7 +122,7 @@ else:
         with col1:
             if st.button("Ask Question"):
                 AskQn()
-                st.write(sys_qn)
+               
         with col2:
             if st.button("Check Ans"):
                 Validate()  # to be removed
