@@ -121,6 +121,7 @@ else:
         with col1:
             if st.button("Ask Question"):
                 AskQn()
+                st.write(sys_qn)
         with col2:
             if st.button("Check Ans"):
                 Validate()  # to be removed
