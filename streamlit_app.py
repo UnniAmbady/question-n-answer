@@ -60,9 +60,10 @@ def extract_question_and_answer(generated_content):
 
 
 # Define the function to be called when the button is clicked
-def AskQn():
+def AskQn(sys_qn,sys_ans):
     # Placeholder for future implementation
-    global document, query, sys_qn, sys_ans # Access the global variables
+    global document, query # Access the global variables
+    #global sys_qn, sys_ans
     # Conditionally avoid redundant parsing of the file
     if not document:
         document = uploaded_file.read().decode()
@@ -121,7 +122,7 @@ else:
         col1, col2 = st.columns(2)
         with col1:
             if st.button("Ask Question"):
-                AskQn()
+                AskQn(sys_qn,sys_ans)
                
         with col2:
             if st.button("Check Ans"):
