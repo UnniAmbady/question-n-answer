@@ -55,7 +55,6 @@ def AskQn():
         document = uploaded_file.read().decode()
 
     messages = [
-        {"role": "system", "content": "You are a Scrum Master Expert."},
         {"role": "system", "content": f"Keep the scope of answering strictly within the context of the document: {document}."},
         {"role": "system", "content": f"If a question is not within the scope of the document, respond with 'I am not sure'."},
         {"role": "user", "content": f"Here's a document: {document} \n\n---\n\n {query}"}
@@ -67,7 +66,7 @@ def AskQn():
                 messages=messages,
                 stream=True,)
     st.write_stream(stream)
-    #st.write("Stream type:*******", type(stream))
+    st.write("Stream type:*******", type(stream))
     #st.write("Stream value:*******", stream)
     #q,a =extract_question_and_answer(stream)
     ### STOPPED for SCRUM MASTER Course 21 Nov 2024
