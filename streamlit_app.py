@@ -65,10 +65,11 @@ def AskQn():
                 model="gpt-4o-mini",
                 messages=messages,
                 stream=False)
-    #response_text =  stream['choices'][0]['message']['content']
-    #st.write_stream(stream)
-
-    st.write(stream)
+    response_dict = json.loads(stream)
+    choice = response_dict['choices'][0]
+    content = choice['message']['content']
+    
+    st.write(content)
     
     #st.write("Stream type:*******", type(stream))
     #st.write("Stream value:*******", stream)
