@@ -87,7 +87,7 @@ def AskQn():
 #function ended
 
 # Add the Validate function
-def Validate():
+def Validate(st_answer):
     # Extract the data from the text_area and display using st.write
     st.write(st_answer)
     return
@@ -121,10 +121,9 @@ else:
         with col2:
             if st.button("Check Ans"):
                 Validate()
-    # Add a multiline text box right below the buttons
-    st_answer = st.text_area("Answer", 
-        value="\n" * 1,  # Sets initial height to 2 lines (1 empty line plus placeholder line)
-        placeholder="Your answer will appear here..." )
+    if uploaded_file:
+        if st_answer := st.chat_input("Type your Answer here"):
+            Validate(st_answer)
     
     # Ask the user for a question via `st.text_area`.
        #question = st.text_area(
