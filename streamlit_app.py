@@ -62,8 +62,8 @@ def extract_question_and_answer(generated_content):
 # Define the function to be called when the button is clicked
 def AskQn():
     # Placeholder for future implementation
-    global document, query # Access the global variables
-    global sys_qn, sys_ans
+    global document, query, sys_qn, sys_ans # Access the global variables
+ 
     # Conditionally avoid redundant parsing of the file
     if not document:
         document = uploaded_file.read().decode()
