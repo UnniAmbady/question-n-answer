@@ -49,18 +49,18 @@ def extract_question_and_answer(generated_content):
         qn = answer_part[0].strip()  # Question part
         ans = answer_part[1].strip() if len(answer_part) > 1 else ""  # Answer part
         # Remove '**' from the question and answer
-        q = qn.replace("**", "")
-        a = ans.replace("**", "")
-        return q, a
+        qn = qn.replace("**", "")
+        ans = ans.replace("**", "")
+        return qn, ans
     except Exception as e:
         raise ValueError(f"Error parsing content: {e}")
 #end of parsing
 
 
 # Define the function to be called when the button is clicked
-def AskQn(q,a):
+def AskQn():
     # Placeholder for future implementation
-    global document, query  # Access the global variables
+    global document, query, q, a  # Access the global variables
     # Conditionally avoid redundant parsing of the file
     if not document:
         document = uploaded_file.read().decode()
@@ -118,7 +118,7 @@ else:
         col1, col2 = st.columns(2)
         with col1:
             if st.button("Ask Question"):
-                AskQn(q,a)
+                AskQn()
         with col2:
             if st.button("Check Ans"):
                 Validate()  # to be removed
