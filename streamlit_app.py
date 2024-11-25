@@ -88,7 +88,9 @@ def AskQn():
 
 # Add the Validate function
 def Validate():
-    return  # Dummy function; no action
+    # Extract the data from the text_area and display using st.write
+    st.write("Validated Answer:", st.session_state.st_answer)
+    return
 
 
 # openai_api_key = st.text_input("OpenAI API Key", type="password")
