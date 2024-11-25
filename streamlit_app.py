@@ -68,7 +68,7 @@ def AskQn():
     generated_content = stream.choices[0].message.content
     
     st.write(generated_content)
-    
+    st.write(type(generated_content))
     #q,a =extract_question_and_answer(stream)
     ### STOPPED for SCRUM MASTER Course 21 Nov 2024
     
