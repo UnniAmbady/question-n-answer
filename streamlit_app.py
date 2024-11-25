@@ -16,7 +16,7 @@ if st.checkbox("Agile Approach"):
     # Display a popup-like message
     st.warning("This software is being developed using an Agile approach. Development will proceed in stages. The model answer will be displayed only after grading in future versions.")
 hide_ans =0
-if st.checkbox("Agile Approach"):
+if st.checkbox("Hide Answer"):
     hide_ans =1
 # Ask user for their OpenAI API key via `st.text_input`.
 # Alternatively, you can store the API key in `./.streamlit/secrets.toml` and access it
