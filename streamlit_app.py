@@ -65,14 +65,10 @@ def AskQn():
                 model="gpt-4o-mini",
                 messages=messages,
                 stream=False)
-    response_dict = json.loads(stream)
-    choice = response_dict['choices'][0]
-    content = choice['message']['content']
+    generated_content = stream.choices[0].message.content
     
-    st.write(content)
+    st.write(generated_content)
     
-    #st.write("Stream type:*******", type(stream))
-    #st.write("Stream value:*******", stream)
     #q,a =extract_question_and_answer(stream)
     ### STOPPED for SCRUM MASTER Course 21 Nov 2024
     
