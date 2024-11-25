@@ -118,7 +118,7 @@ else:
         col1, col2 = st.columns(2)
         with col1:
             if st.button("Ask Question"):
-                AskQn()
+                AskQn(q,a)
         with col2:
             if st.button("Check Ans"):
                 Validate()  # to be removed
