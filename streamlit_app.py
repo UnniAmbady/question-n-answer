@@ -21,8 +21,9 @@ if st.checkbox("Hide Answer"):
     hide_ans =1
 
 # Define a global variable
-q="empty" #enty string of Question
-a="empty" #emply String of Answer
+sys_qn="empty" #enty string of Question
+sys_ans="empty" #emply String of Answer
+
 query = "Create a random Question with an Answer"
 document = None  # Initially set to None to indicate no document is uploaded
 uploaded_file = None  # Define uploaded_file globally
@@ -31,7 +32,7 @@ uploaded_file = None  # Define uploaded_file globally
 # Function to parse the input string
 
 def extract_question_and_answer(generated_content):
-    global q, a
+    
     """
     Extracts the question and answer from a given string based on the keywords 'Question:' and 'Answer:'.
     
@@ -50,9 +51,9 @@ def extract_question_and_answer(generated_content):
         qn = answer_part[0].strip()  # Question part
         ans = answer_part[1].strip() if len(answer_part) > 1 else ""  # Answer part
         # Remove '**' from the question and answer
-        q = qn.replace("**", "")
-        a = ans.replace("**", "")
-        return q, a
+        qn = qn.replace("**", "")
+        ans = ans.replace("**", "")
+        return qn, ans
     except Exception as e:
         raise ValueError(f"Error parsing content: {e}")
 #end of parsing
@@ -61,7 +62,7 @@ def extract_question_and_answer(generated_content):
 # Define the function to be called when the button is clicked
 def AskQn():
     # Placeholder for future implementation
-    global document, query, q, a  # Access the global variables
+    global document, query, sys_qn, sys_ans # Access the global variables
     # Conditionally avoid redundant parsing of the file
     if not document:
         document = uploaded_file.read().decode()
@@ -80,17 +81,17 @@ def AskQn():
     generated_content = stream.choices[0].message.content
     
     #st.write(generated_content)
-    q,a =extract_question_and_answer(generated_content)
-    st.write(q)
+    sys_qn, sys_ans =extract_question_and_answer(generated_content)
+    st.write(sys_qn)
     if(not hide_ans):
-        st.write(a)  
+        st.write(sys_ans)  
     return  # Exits the function
 #function ended
 
 # Add the Validate function
 def Validate(st_answer):
     # Extract the data from the text_area and display using st.write
-    st.write(q)
+    st.write(sys_qn)
     st.write(st_answer)
     return
 
