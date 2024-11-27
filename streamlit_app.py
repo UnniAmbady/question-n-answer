@@ -98,8 +98,8 @@ def AskQn():
 # Add the Validate function
 def Validate():
     sys_qn = st.session_state.sys_qn
-    sys_ans = st.session_state.sys_ans =sys_ans
-    st_answer = st.session_state.sys_qn =sy_ans
+    sys_ans = st.session_state.sys_ans
+    st_answer = st.session_state.sys_st_answer
 
     return
 
