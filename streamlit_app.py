@@ -163,14 +163,10 @@ else:
                 st.write("Debug: sys_ans =", sys_ans)
                 st.write(st_answer)
                 save_global(sys_qn, sys_ans, st_answer)              
-                #Validate(sys_qn, sys_ans, st_answer)
+                Validate()
 
-    Validate()
-    # Ask the user for a question via `st.text_area`.
-       #question = st.text_area(
-    #    "Now ask a question about the document!",
-    #    placeholder="Can you give me a short summary?",
-    #    disabled=not uploaded_file,)
+    #Validate()
+
     if not uploaded_file:
         st.write("Upload a file before you can ask a Question.")
     if uploaded_file:
