@@ -129,6 +129,7 @@ else:
             # global sys_qn, sys_ans.............................................#TAB Error
             st.write("Debug: sys_qn =", sys_qn)
             st.write("Debug: sys_ans =", sys_ans)
+            st.write(st_answer)
             Validate(st_answer)
     
     # Ask the user for a question via `st.text_area`.
