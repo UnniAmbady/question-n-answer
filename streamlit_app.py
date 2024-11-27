@@ -120,19 +120,13 @@ else:
     uploaded_file = st.file_uploader(
         "Upload a document (.txt or .md)", type=("txt", "md")
     )
-    if uploaded_file:
-        # Create a row with the buttons "Ask Question" and "Check Ans"
-        col1, col2 = st.columns(2)
-        with col1:
-            if st.button("Ask Question"):
-                global sys_qn, sys_ans
-                sys_qn, sys_ans = AskQn()
-                st.write ("Debug Q:", sys_qn)
-                st.write ("Debug A:", sys_ans)
-               
-        with col2:
-            if st.button("Check Ans"):
-                Validate()  # to be removed
+    if uploaded_file:             
+        if st.button("Ask Question"):
+            global sys_qn, sys_ans
+            sys_qn, sys_ans = AskQn()
+            st.write ("Debug Q:", sys_qn)
+            st.write ("Debug A:", sys_ans)
+
     if uploaded_file:
         if st_answer := st.chat_input("Type your Answer here"):
             global sys_qn, sys_ans
