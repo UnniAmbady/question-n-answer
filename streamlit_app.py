@@ -21,8 +21,8 @@ if st.checkbox("Hide Answer"):
     hide_ans =1
 
 # Define a global variable
-sys_qn="empty" #enty string of Question
-sys_ans="empty" #emply String of Answer
+sys_qn="No Question Yet" #enty string of Question
+sys_ans="Answer not yet Brewed" #emply String of Answer
 
 query = "Create a random Question with an Answer"
 document = None  # Initially set to None to indicate no document is uploaded
@@ -32,7 +32,7 @@ uploaded_file = None  # Define uploaded_file globally
 # Function to parse the input string
 
 def extract_question_and_answer(generated_content):
-    global sys_qn, sys_ans
+    
     """
     Extracts the question and answer from a given string based on the keywords 'Question:' and 'Answer:'.
     
@@ -51,8 +51,8 @@ def extract_question_and_answer(generated_content):
         qn = answer_part[0].strip()  # Question part
         ans = answer_part[1].strip() if len(answer_part) > 1 else ""  # Answer part
         # Remove '**' from the question and answer
-        sys_qn = qn = qn.replace("**", "")
-        sys_ans = ans = ans.replace("**", "")
+        qn = qn.replace("**", "")
+        ans = ans.replace("**", "")
         return qn, ans
     except Exception as e:
         raise ValueError(f"Error parsing content: {e}")
@@ -82,11 +82,11 @@ def AskQn():
     generated_content = stream.choices[0].message.content
     
     #st.write(generated_content)
-    sys_qn, sys_ans =extract_question_and_answer(generated_content)
+    global sys_qn, sys_ans =extract_question_and_answer(generated_content)
     st.write(sys_qn)
     if(not hide_ans):
         st.write(sys_ans)  
-    return sys_qn, sys_ans # Exits the function
+    return 
 #function ended
 
 # Add the Validate function
@@ -122,7 +122,7 @@ else:
         col1, col2 = st.columns(2)
         with col1:
             if st.button("Ask Question"):
-                sys_qn, sys_ans = AskQn()
+                AskQn()
                 st.write ("Debug Q:", sys_qn)
                 st.write ("Debug A:", sys_ans)
                
