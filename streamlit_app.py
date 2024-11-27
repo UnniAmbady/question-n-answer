@@ -108,10 +108,9 @@ def Validate():
 ### __mail__ body Starts from here
 
 # openai_api_key = st.text_input("OpenAI API Key", type="password")
-#openai_api_key = st.secrets["openai"]["secret_key"]
-#client = OpenAI(api_key=openai_api_key)
-#OPtimise
-OpenAI.api_key = st.secrets["openai"]["secret_key"]
+openai_api_key = st.secrets["openai"]["secret_key"]
+client = OpenAI(api_key=openai_api_key)
+
 if not client:
     st.info("Please add your OpenAI API key to continue.", icon="🗝️")
 else:
