@@ -99,8 +99,8 @@ def AskQn():
 def Validate():
     sys_qn = st.session_state.sys_qn
     sys_ans = st.session_state.sys_ans
-    st_answer = st.session_state.sys_st_answer
-
+    st_answer = st.session_state.st_answer
+    #to do 28 Nov 2024
     return
 
 
