@@ -101,7 +101,9 @@ def Validate(sys_qn, sys_ans, st_answer):
 # openai_api_key = st.text_input("OpenAI API Key", type="password")
 openai_api_key = st.secrets["openai"]["secret_key"]
 client = OpenAI(api_key=openai_api_key)
-
+#global Variables
+sys_qn, sys_ans = "Q Not Yet Asked" , "Answer Not Ready"
+st_answer ="Student to answer"
 if not client:
     st.info("Please add your OpenAI API key to continue.", icon="🗝️")
 else:
@@ -118,11 +120,10 @@ else:
         "Upload a document (.txt or .md)", type=("txt", "md")
     )
     # Define global tuple
-    sys_qn, sys_ans = "Q Not Yet Asked" , "Answer Not Ready"
-    st_answer ="Student to answer"
+
     if uploaded_file:             
         if st.button("Ask Question"):
-            # global sys_qn, sys_ans    #NOT Required (also nee take out 2 tabs to the front
+            # global sys_qn, sys_ans    
             sys_qn, sys_ans = AskQn()
             st.write ("Debug Q:", sys_qn)
             st.write ("Debug A:", sys_ans)
