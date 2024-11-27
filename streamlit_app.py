@@ -30,32 +30,8 @@ hide_ans =0
 if st.checkbox("Hide Answer"):
     hide_ans =1
 
-# Define a global variable
-#sys_qn="No Question Yet" #enty string of Question
-#sys_ans="Answer not yet Brewed" #emply String of Answer
 
-############################################################
-# Initialize the session state variables if they don't exist
-#if 'sys_qn' not in st.session_state:
-#    st.session_state.sys_qn = None
-
-#if 'sys_ans' not in st.session_state:
-#    st.session_state.sys_ans = None
-
-#if 'st_answer' not in st.session_state:
-#   st.session_state.st_answer = None
-
-# Function to update session state variables
-#def update_state(question, answer, status):
-    #st.session_state.sys_qn = question
-    #st.session_state.sys_ans = answer
-    #st.session_state.st_answer = status
-
-
-############################################################
-
-
-query = "Create a random Question with an Answer"
+query = "Create a random Question with an Answer. Answer must be short."
 document = None  # Initially set to None to indicate no document is uploaded
 uploaded_file = None  # Define uploaded_file ly
 
@@ -127,21 +103,15 @@ def Validate():
     st.write("Sys Ans:",sys_ans)
     st.write("St Ans:",st_answer)
     return
-#Save Global
-def save_global(qn, ans, st_a):
-   #global Variables
-    #global sys_qn, sys_ans, st_answer 
-    sys_qn = qn 
-    sys_ans = ans
-    st_answer = st_a
-    return
-#end of Save Global Variables
 
+
+### __mail__ body Starts from here
 
 # openai_api_key = st.text_input("OpenAI API Key", type="password")
-openai_api_key = st.secrets["openai"]["secret_key"]
-client = OpenAI(api_key=openai_api_key)
-
+#openai_api_key = st.secrets["openai"]["secret_key"]
+#client = OpenAI(api_key=openai_api_key)
+#OPtimise
+openai.api_key = st.secrets["openai"]["secret_key"]
 if not client:
     st.info("Please add your OpenAI API key to continue.", icon="🗝️")
 else:
