@@ -133,6 +133,9 @@ else:
                 st.write("Debug: sys_ans =", sys_ans)
                 st.write(st_answer)
                 continue
+            else:
+                st.write(" We are here waiting")
+                continue
                 #Validate(sys_qn, sys_ans, st_answer)
     #Validate(sys_qn, sys_ans, st_answer)
     # Ask the user for a question via `st.text_area`.
