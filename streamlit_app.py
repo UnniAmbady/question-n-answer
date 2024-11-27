@@ -1,4 +1,4 @@
-AI# Question and Answer on a Given Topic 
+# Question and Answer on a Given Topic 
 # Topic file is uploaded as a Text
 
 import streamlit as st
