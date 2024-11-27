@@ -62,7 +62,7 @@ def extract_question_and_answer(generated_content):
 # Define the function to be called when the button is clicked
 def AskQn():
     # Placeholder for future implementation
-    global document, query  # Access the global variables
+    global document, query, sys_qn, sys_ans   # Access the global variables
  
     # Conditionally avoid redundant parsing of the file
     if not document:
@@ -80,10 +80,6 @@ def AskQn():
                 messages=messages,
                 stream=False)
     generated_content = stream.choices[0].message.content
-    
-    #st.write(generated_content)
-    
-    global sys_qn, sys_ans 
     sys_qn, sys_ans = extract_question_and_answer(generated_content)
     st.write(sys_qn)
     if(not hide_ans):
@@ -130,7 +126,7 @@ else:
 
     if uploaded_file:
         if st_answer := st.chat_input("Type your Answer here"):
-            global sys_qn, sys_ans
+            # global sys_qn, sys_ans.............................................#TAB Error
             st.write("Debug: sys_qn =", sys_qn)
             st.write("Debug: sys_ans =", sys_ans)
             Validate(st_answer)
