@@ -101,6 +101,7 @@ def Validate():
     sys_ans = st.session_state.sys_ans
     st_answer = st.session_state.st_answer
     #to do 28 Nov 2024
+    st.write("Answer will be processed in the next version")
     return
 
 
