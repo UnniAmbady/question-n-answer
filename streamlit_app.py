@@ -100,7 +100,7 @@ def Validate():
     st.write("St Ans:",st_answer)
     return
 #Save Global
-save_global(qn, ans, st_a):
+def save_global(qn, ans, st_a):
    #global Variables
     global sys_qn, sys_ans, st_answer 
     sys_qn = qn 
