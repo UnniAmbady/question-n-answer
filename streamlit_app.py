@@ -166,6 +166,15 @@ else:
                 Validate()
 
     #Validate()
+    ###########################################################
+    def handle_chat():
+        st.write("Chat submitted!")
+    
+    # Using st.chat_input with a prompt
+    if question := st.chat_input("What is up?", on_submit=handle_chat):
+        st.write(f"You asked: {question}")
+
+    ############################################################
 
     if not uploaded_file:
         st.write("Upload a file before you can ask a Question.")
