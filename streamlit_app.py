@@ -21,12 +21,12 @@ if st.checkbox("Hide Answer"):
     hide_ans =1
 
 # Define a global variable
-sys_qn="No Question Yet" #enty string of Question
-sys_ans="Answer not yet Brewed" #emply String of Answer
+#sys_qn="No Question Yet" #enty string of Question
+#sys_ans="Answer not yet Brewed" #emply String of Answer
 
 query = "Create a random Question with an Answer"
 document = None  # Initially set to None to indicate no document is uploaded
-uploaded_file = None  # Define uploaded_file globally
+uploaded_file = None  # Define uploaded_file ly
 
 #parse
 # Function to parse the input string
@@ -62,7 +62,7 @@ def extract_question_and_answer(generated_content):
 # Define the function to be called when the button is clicked
 def AskQn():
     # Placeholder for future implementation
-    global document, query, sys_qn, sys_ans   # Access the global variables
+    global document, query   # Access the global variables
  
     # Conditionally avoid redundant parsing of the file
     if not document:
@@ -123,14 +123,12 @@ else:
             sys_qn, sys_ans = AskQn()
             st.write ("Debug Q:", sys_qn)
             st.write ("Debug A:", sys_ans)
-
-    if uploaded_file:
-        if st_answer := st.chat_input("Type your Answer here"):
-            # global sys_qn, sys_ans.............................................#TAB Error
-            st.write("Debug: sys_qn =", sys_qn)
-            st.write("Debug: sys_ans =", sys_ans)
-            st.write(st_answer)
-            Validate(st_answer)
+            if st_answer := st.chat_input("Type your Answer here"):
+                # global sys_qn, sys_ans.............................................#TAB Error
+                st.write("Debug: sys_qn =", sys_qn)
+                st.write("Debug: sys_ans =", sys_ans)
+                st.write(st_answer)
+                Validate(st_answer)
     
     # Ask the user for a question via `st.text_area`.
        #question = st.text_area(
