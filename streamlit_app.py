@@ -27,6 +27,27 @@ if st.checkbox("Hide Answer"):
 #sys_qn="No Question Yet" #enty string of Question
 #sys_ans="Answer not yet Brewed" #emply String of Answer
 
+############################################################
+# Initialize the session state variables if they don't exist
+if 'sys_qn' not in st.session_state:
+    st.session_state.sys_qn = None
+
+if 'sys_ans' not in st.session_state:
+    st.session_state.sys_ans = None
+
+if 'st_answer' not in st.session_state:
+    st.session_state.st_answer = None
+
+# Function to update session state variables
+def update_state(question, answer, status):
+    st.session_state.sys_qn = question
+    st.session_state.sys_ans = answer
+    st.session_state.st_answer = status
+
+
+############################################################
+
+
 query = "Create a random Question with an Answer"
 document = None  # Initially set to None to indicate no document is uploaded
 uploaded_file = None  # Define uploaded_file ly
@@ -132,8 +153,7 @@ else:
     # Define global tuple
 
     if uploaded_file:             
-        if st.button("Ask Question"):
-            # global sys_qn, sys_ans    
+        if st.button("Ask Question"):         
             sys_qn, sys_ans = AskQn()
             st.write ("Debug Q:", sys_qn)
             st.write ("Debug A:", sys_ans)
@@ -142,9 +162,11 @@ else:
                 st.write("Debug: sys_qn =", sys_qn)
                 st.write("Debug: sys_ans =", sys_ans)
                 st.write(st_answer)
-                save_global(sys_qn, sys_ans, st_answer)
-                
+                save_global(sys_qn, sys_ans, st_answer)              
                 #Validate(sys_qn, sys_ans, st_answer)
+        if st.button("Update State"):
+            # Update the session state variables when button is pressed
+            update_state(question_input, answer_input, status_input)
     Validate()
     # Ask the user for a question via `st.text_area`.
        #question = st.text_area(
