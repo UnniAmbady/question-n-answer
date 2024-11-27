@@ -13,7 +13,8 @@ if "sys_ans" not in st.session_state:
     st.session_state.sys_ans = "Ans not ready"
 if "st_answer" not in st.session_state:
     st.session_state.st_answer = "student to answer"
-
+if "st_answered" not in st.session_state:
+    st.session_state.st_answered = 0
 
 
 # Show title and description.
@@ -96,12 +97,10 @@ def AskQn():
 
 # Add the Validate function
 def Validate():
-    # Extract the data from the text_area and display using st.write  
-    #global sys_qn, sys_ans, st_answer 
-    st.write("VALIDATE FUNCTION")
-    st.write("Sys Q:", sys_qn)
-    st.write("Sys Ans:",sys_ans)
-    st.write("St Ans:",st_answer)
+    sys_qn = st.session_state.sys_qn
+    sys_ans = st.session_state.sys_ans =sys_ans
+    st_answer = st.session_state.sys_qn =sy_ans
+
     return
 
 
@@ -135,12 +134,15 @@ else:
             
         if st_answer := st.chat_input("Type your Answer here"):
             st.session_state.st_answer = st_answer
+            st.session_state.st_answered = 1
             #save_global(sys_qn, sys_ans, st_answer)              
-            #Validate()       
-            
-    st.write("Q", st.session_state.sys_qn)
-    st.write("A", st.session_state.sys_ans)
-    st.write("S", st.session_state.st_answer)
+            Validate()     
+    
+    # Continue on main trunk        
+    #st.write("Q", st.session_state.sys_qn)
+    #st.write("A", st.session_state.sys_ans)
+    #st.write("S", st.session_state.st_answer)
+    
     if not uploaded_file:
         st.write("Upload a file before you can ask a Question.")
     if uploaded_file:
