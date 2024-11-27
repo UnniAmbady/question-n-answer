@@ -158,7 +158,7 @@ else:
             st.session_state.sys_qn =sys_qn
             st.session_state.sys_ans =Sys_ans
         if st_answer := st.chat_input("Type your Answer here"):
-            st.session_state.st-answer = st_answer
+            st.session_state.st_answer = st_answer
             #save_global(sys_qn, sys_ans, st_answer)              
             #Validate()
 
