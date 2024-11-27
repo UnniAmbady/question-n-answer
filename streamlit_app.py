@@ -7,9 +7,15 @@ from openai import OpenAI
 #import json
 
 # deifine global variables
-st.session_state.sys_qn = "Q yet to come"
-st.session_state.sys_ans = "Ans not ready"
-st.session_state.st_answer = "student to answer"
+if "sys_qn" not in st.session_state:
+    st.session_state.sys_qn = "Q yet to come"
+if "sys_ans" not in st.session_state:
+    st.session_state.sys_ans = "Ans not ready"
+if "st_answer" not in st.session_state:
+    st.session_state.st_answer = "student to answer"
+
+
+
 # Show title and description.
 st.title("📄 LMS Question & Answer 🎈")
 st.write("Lecturer to Upload a document. "
@@ -157,13 +163,15 @@ else:
             sys_qn, sys_ans = AskQn()
             st.session_state.sys_qn =sys_qn
             st.session_state.sys_ans =sys_ans
-            st.write("Q", st.session_state.sys_qn)
-            st.write("A", st.session_state.sys_ans)
+            
         if st_answer := st.chat_input("Type your Answer here"):
             st.session_state.st_answer = st_answer
             #save_global(sys_qn, sys_ans, st_answer)              
             #Validate()       
-            st.write("S", st.session_state.st_answer)
+            
+    st.write("Q", st.session_state.sys_qn)
+    st.write("A", st.session_state.sys_ans)
+    st.write("S", st.session_state.st_answer)
     if not uploaded_file:
         st.write("Upload a file before you can ask a Question.")
     if uploaded_file:
