@@ -88,11 +88,11 @@ def AskQn():
 #function ended
 
 # Add the Validate function
-def Validate(st_answer):
-    # Extract the data from the text_area and display using st.write
-    #global sys_qn,sys_ans
-    #st.write(sys_qn)
-    #st.write(st_answer)
+def Validate(sys_qn, sys_ans, st_answer):
+    # Extract the data from the text_area and display using st.write    
+    st.write("Sys Q:", sys_qn)
+    st.write("Sys Ans:",sys_ans)
+    st.write("St Ans:",st_answer)
     return
 #Unused function
 
@@ -129,7 +129,7 @@ else:
                 st.write("Debug: sys_qn =", sys_qn)
                 st.write("Debug: sys_ans =", sys_ans)
                 st.write(st_answer)
-                Validate(st_answer)
+                Validate(sys_qn, sys_ans, st_answer)
     
     # Ask the user for a question via `st.text_area`.
        #question = st.text_area(
