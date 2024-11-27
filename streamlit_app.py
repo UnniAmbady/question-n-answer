@@ -89,7 +89,8 @@ def AskQn():
 
 # Add the Validate function
 def Validate(sys_qn, sys_ans, st_answer):
-    # Extract the data from the text_area and display using st.write    
+    # Extract the data from the text_area and display using st.write  
+    st.write("VALIDATE FUNCTION")
     st.write("Sys Q:", sys_qn)
     st.write("Sys Ans:",sys_ans)
     st.write("St Ans:",st_answer)
