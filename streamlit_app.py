@@ -62,7 +62,7 @@ def extract_question_and_answer(generated_content):
 # Define the function to be called when the button is clicked
 def AskQn():
     # Placeholder for future implementation
-    global document, query, sys_qn, sys_ans # Access the global variables
+    global document, query  # Access the global variables
  
     # Conditionally avoid redundant parsing of the file
     if not document:
@@ -82,7 +82,9 @@ def AskQn():
     generated_content = stream.choices[0].message.content
     
     #st.write(generated_content)
-    global sys_qn, sys_ans =extract_question_and_answer(generated_content)
+    
+    global sys_qn, sys_ans 
+    sys_qn, sys_ans = extract_question_and_answer(generated_content)
     st.write(sys_qn)
     if(not hide_ans):
         st.write(sys_ans)  
@@ -92,10 +94,11 @@ def AskQn():
 # Add the Validate function
 def Validate(st_answer):
     # Extract the data from the text_area and display using st.write
-    global sys_qn,sys_ans
-    st.write(sys_qn)
-    st.write(st_answer)
+    #global sys_qn,sys_ans
+    #st.write(sys_qn)
+    #st.write(st_answer)
     return
+#Unused function
 
 
 # openai_api_key = st.text_input("OpenAI API Key", type="password")
