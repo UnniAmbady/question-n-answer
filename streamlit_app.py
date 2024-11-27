@@ -88,7 +88,7 @@ def AskQn():
     st.write(sys_qn)
     if(not hide_ans):
         st.write(sys_ans)  
-    return 
+    return sys_qn, sys_ans
 #function ended
 
 # Add the Validate function
@@ -125,7 +125,8 @@ else:
         col1, col2 = st.columns(2)
         with col1:
             if st.button("Ask Question"):
-                AskQn()
+                global sys_qn, sys_ans
+                sys_qn, sys_ans = AskQn()
                 st.write ("Debug Q:", sys_qn)
                 st.write ("Debug A:", sys_ans)
                
@@ -134,6 +135,7 @@ else:
                 Validate()  # to be removed
     if uploaded_file:
         if st_answer := st.chat_input("Type your Answer here"):
+            global sys_qn, sys_ans
             st.write("Debug: sys_qn =", sys_qn)
             st.write("Debug: sys_ans =", sys_ans)
             Validate(st_answer)
