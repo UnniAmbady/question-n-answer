@@ -141,8 +141,7 @@ else:
     # Streamlit app layout
     st.title("Interactive Q&A Generator")
     # Add a button that calls the AskQn() function
-    if xxx:= st.chat_input("Test Input"):
-        st.write(xxx)
+
     # OpenAI client already created.
     # client = OpenAI(api_key=openai_api_key)
 
