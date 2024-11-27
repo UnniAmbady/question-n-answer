@@ -1,4 +1,4 @@
-# Question and Answer on a Given Topic 
+AI# Question and Answer on a Given Topic 
 # Topic file is uploaded as a Text
 
 import streamlit as st
@@ -111,7 +111,7 @@ def Validate():
 #openai_api_key = st.secrets["openai"]["secret_key"]
 #client = OpenAI(api_key=openai_api_key)
 #OPtimise
-openai.api_key = st.secrets["openai"]["secret_key"]
+OpenAI.api_key = st.secrets["openai"]["secret_key"]
 if not client:
     st.info("Please add your OpenAI API key to continue.", icon="🗝️")
 else:
