@@ -116,7 +116,8 @@ else:
     uploaded_file = st.file_uploader(
         "Upload a document (.txt or .md)", type=("txt", "md")
     )
-    
+    # Define global tuple
+    sys_qn, sys_ans = "NOt Yet Asked" , "Answer Not Ready"
     if uploaded_file:             
         if st.button("Ask Question"):
             # global sys_qn, sys_ans    #NOT Required (also nee take out 2 tabs to the front
