@@ -8,7 +8,7 @@ from openai import OpenAI
 
 # deifine global variables
 sys_qn, sys_ans = "Q yet to come", "Ans not ready"
-st_ans = "student to answer"
+st_answer = "student to answer"
 # Show title and description.
 st.title("📄 LMS Question & Answer 🎈")
 st.write("Lecturer to Upload a document. "
@@ -104,7 +104,7 @@ def save_global(qn, ans, st_a):
    #global Variables
     global sys_qn, sys_ans, st_answer 
     sys_qn = qn 
-    sys_ans -ans
+    sys_ans = ans
     st_answer = st_a
     return
 #end of Save Global Variables
