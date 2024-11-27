@@ -164,9 +164,7 @@ else:
                 st.write(st_answer)
                 save_global(sys_qn, sys_ans, st_answer)              
                 #Validate(sys_qn, sys_ans, st_answer)
-        if st.button("Update State"):
-            # Update the session state variables when button is pressed
-            update_state(question_input, answer_input, status_input)
+
     Validate()
     # Ask the user for a question via `st.text_area`.
        #question = st.text_area(
