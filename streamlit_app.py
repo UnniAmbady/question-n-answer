@@ -171,8 +171,8 @@ else:
         st.write("Chat submitted!")
     
     # Using st.chat_input with a prompt
-    if question := st.chat_input("Write something?", on_submit=handle_chat):
-        st.write(f"You asked: {question}")
+    if ques := st.chat_input("Write something?", on_submit=handle_chat):
+        st.write(f"You asked: {ques}")
 
     ############################################################
 
