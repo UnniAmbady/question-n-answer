@@ -7,8 +7,9 @@ from openai import OpenAI
 #import json
 
 # deifine global variables
-sys_qn, sys_ans = "Q yet to come", "Ans not ready"
-st_answer = "student to answer"
+st.session_state.sys_qn = "Q yet to come"
+st.session_state.sys_ans = "Ans not ready"
+st.session_state.st_answer = "student to answer"
 # Show title and description.
 st.title("📄 LMS Question & Answer 🎈")
 st.write("Lecturer to Upload a document. "
@@ -29,20 +30,20 @@ if st.checkbox("Hide Answer"):
 
 ############################################################
 # Initialize the session state variables if they don't exist
-if 'sys_qn' not in st.session_state:
-    st.session_state.sys_qn = None
+#if 'sys_qn' not in st.session_state:
+#    st.session_state.sys_qn = None
 
-if 'sys_ans' not in st.session_state:
-    st.session_state.sys_ans = None
+#if 'sys_ans' not in st.session_state:
+#    st.session_state.sys_ans = None
 
-if 'st_answer' not in st.session_state:
-    st.session_state.st_answer = None
+#if 'st_answer' not in st.session_state:
+#   st.session_state.st_answer = None
 
 # Function to update session state variables
-def update_state(question, answer, status):
-    st.session_state.sys_qn = question
-    st.session_state.sys_ans = answer
-    st.session_state.st_answer = status
+#def update_state(question, answer, status):
+    #st.session_state.sys_qn = question
+    #st.session_state.sys_ans = answer
+    #st.session_state.st_answer = status
 
 
 ############################################################
@@ -114,7 +115,7 @@ def AskQn():
 # Add the Validate function
 def Validate():
     # Extract the data from the text_area and display using st.write  
-    global sys_qn, sys_ans, st_answer 
+    #global sys_qn, sys_ans, st_answer 
     st.write("VALIDATE FUNCTION")
     st.write("Sys Q:", sys_qn)
     st.write("Sys Ans:",sys_ans)
@@ -123,7 +124,7 @@ def Validate():
 #Save Global
 def save_global(qn, ans, st_a):
    #global Variables
-    global sys_qn, sys_ans, st_answer 
+    #global sys_qn, sys_ans, st_answer 
     sys_qn = qn 
     sys_ans = ans
     st_answer = st_a
@@ -154,27 +155,16 @@ else:
     if uploaded_file:             
         if st.button("Ask Question"):         
             sys_qn, sys_ans = AskQn()
-            st.write ("Debug Q:", sys_qn)
-            st.write ("Debug A:", sys_ans)
+            st.session_state.sys_qn =sys_qn
+            st.session_state.sys_ans =Sys_ans
         if st_answer := st.chat_input("Type your Answer here"):
-            # global sys_qn, sys_ans.............................................#TAB Error
-            st.write("Debug: sys_qn =", sys_qn)
-            st.write("Debug: sys_ans =", sys_ans)
-            st.write(st_answer)
-            save_global(sys_qn, sys_ans, st_answer)              
-            Validate()
+            st.session_state.st-answer = st_answer
+            #save_global(sys_qn, sys_ans, st_answer)              
+            #Validate()
 
-    #Validate()
-    ###########################################################
-    def handle_chat():
-        st.write("Chat submitted!")
-    
-    # Using st.chat_input with a prompt
-    if ques := st.chat_input("Write something?", on_submit=handle_chat):
-        st.write(f"You asked: {ques}")
-
-    ############################################################
-
+    st.write("Q", st.session_state.sys_qn)
+    st.write("A", st.session_state.sys_ans)
+    st.write("S", st.session_state.st_answer)
     if not uploaded_file:
         st.write("Upload a file before you can ask a Question.")
     if uploaded_file:
