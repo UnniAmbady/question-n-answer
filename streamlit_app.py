@@ -6,6 +6,9 @@ from openai import OpenAI
 #import re
 #import json
 
+# deifine global variables
+sys_qn, sys_ans = "Q yet to come", "Ans not ready"
+st_ans = "student to answer"
 # Show title and description.
 st.title("📄 LMS Question & Answer 🎈")
 st.write("Lecturer to Upload a document. "
@@ -88,22 +91,29 @@ def AskQn():
 #function ended
 
 # Add the Validate function
-def Validate(sys_qn, sys_ans, st_answer):
+def Validate():
     # Extract the data from the text_area and display using st.write  
+    global sys_qn, sys_ans, st_answer 
     st.write("VALIDATE FUNCTION")
     st.write("Sys Q:", sys_qn)
     st.write("Sys Ans:",sys_ans)
     st.write("St Ans:",st_answer)
     return
-#Unused function
+#Save Global
+save_global(qn, ans, st_a):
+   #global Variables
+    global sys_qn, sys_ans, st_answer 
+    sys_qn = qn 
+    sys_ans -ans
+    st_answer = st_a
+    return
+#end of Save Global Variables
 
 
 # openai_api_key = st.text_input("OpenAI API Key", type="password")
 openai_api_key = st.secrets["openai"]["secret_key"]
 client = OpenAI(api_key=openai_api_key)
-#global Variables
-sys_qn, sys_ans = "Q Not Yet Asked" , "Answer Not Ready"
-st_answer ="Student to answer"
+
 if not client:
     st.info("Please add your OpenAI API key to continue.", icon="🗝️")
 else:
@@ -132,12 +142,10 @@ else:
                 st.write("Debug: sys_qn =", sys_qn)
                 st.write("Debug: sys_ans =", sys_ans)
                 st.write(st_answer)
-                continue
-            else:
-                st.write(" We are here waiting")
+                save_global(sys_qn, sys_ans, st_answer)
                 
                 #Validate(sys_qn, sys_ans, st_answer)
-    #Validate(sys_qn, sys_ans, st_answer)
+    Validate()
     # Ask the user for a question via `st.text_area`.
        #question = st.text_area(
     #    "Now ask a question about the document!",
