@@ -131,7 +131,7 @@ else:
                 st.write("Debug: sys_ans =", sys_ans)
                 st.write(st_answer)
                 Validate(sys_qn, sys_ans, st_answer)
-    
+    Validate("AAAA", "BBB", "CCCC")
     # Ask the user for a question via `st.text_area`.
        #question = st.text_area(
     #    "Now ask a question about the document!",
