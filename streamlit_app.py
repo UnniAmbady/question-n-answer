@@ -120,9 +120,10 @@ else:
     uploaded_file = st.file_uploader(
         "Upload a document (.txt or .md)", type=("txt", "md")
     )
+    
     if uploaded_file:             
         if st.button("Ask Question"):
-            global sys_qn, sys_ans
+            # global sys_qn, sys_ans    #NOT Required (also nee take out 2 tabs to the front
             sys_qn, sys_ans = AskQn()
             st.write ("Debug Q:", sys_qn)
             st.write ("Debug A:", sys_ans)
