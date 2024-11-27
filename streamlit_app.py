@@ -118,7 +118,8 @@ else:
         "Upload a document (.txt or .md)", type=("txt", "md")
     )
     # Define global tuple
-    sys_qn, sys_ans = "NOt Yet Asked" , "Answer Not Ready"
+    sys_qn, sys_ans = "Q Not Yet Asked" , "Answer Not Ready"
+    st_answer ="Student to answer"
     if uploaded_file:             
         if st.button("Ask Question"):
             # global sys_qn, sys_ans    #NOT Required (also nee take out 2 tabs to the front
@@ -131,7 +132,7 @@ else:
                 st.write("Debug: sys_ans =", sys_ans)
                 st.write(st_answer)
                 Validate(sys_qn, sys_ans, st_answer)
-    Validate("AAAA", "BBB", "CCCC")
+    Validate(sys_qn, sys_ans, st_answer)
     # Ask the user for a question via `st.text_area`.
        #question = st.text_area(
     #    "Now ask a question about the document!",
