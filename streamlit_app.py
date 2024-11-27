@@ -156,13 +156,13 @@ else:
             sys_qn, sys_ans = AskQn()
             st.write ("Debug Q:", sys_qn)
             st.write ("Debug A:", sys_ans)
-            if st_answer := st.chat_input("Type your Answer here"):
-                # global sys_qn, sys_ans.............................................#TAB Error
-                st.write("Debug: sys_qn =", sys_qn)
-                st.write("Debug: sys_ans =", sys_ans)
-                st.write(st_answer)
-                save_global(sys_qn, sys_ans, st_answer)              
-                Validate()
+        if st_answer := st.chat_input("Type your Answer here"):
+            # global sys_qn, sys_ans.............................................#TAB Error
+            st.write("Debug: sys_qn =", sys_qn)
+            st.write("Debug: sys_ans =", sys_ans)
+            st.write(st_answer)
+            save_global(sys_qn, sys_ans, st_answer)              
+            Validate()
 
     #Validate()
     ###########################################################
