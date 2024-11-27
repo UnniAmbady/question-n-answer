@@ -156,7 +156,7 @@ else:
         if st.button("Ask Question"):         
             sys_qn, sys_ans = AskQn()
             st.session_state.sys_qn =sys_qn
-            st.session_state.sys_ans =Sys_ans
+            st.session_state.sys_ans =sys_ans
         if st_answer := st.chat_input("Type your Answer here"):
             st.session_state.st_answer = st_answer
             #save_global(sys_qn, sys_ans, st_answer)              
