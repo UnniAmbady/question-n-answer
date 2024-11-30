@@ -106,7 +106,7 @@ def Validate():
     st.write("Answer will be processed in the next version")
 ###########################################################################30 Nov
     messages =  [{"role": "user",
-    "content": f"[Ignore Grammar and Spellingerrors]. \
+    "content": f"[Ignore Grammar and Spelling errors]. \
                 [Respond in bullet Form as brief as possible] \
                  [Compare the and Comment on any Logical Errors] \
                  [Based on the logical correctness, **AWARD** a Grade  0 to 100% scale] \
@@ -117,14 +117,15 @@ def Validate():
     stream = client.chat.completions.create(
                     model="gpt-4o-mini",
                     messages=messages, 
+                    temperature=60,  # Added temperature parameter.
                     stream=True,
                 )
-    st.write( f"Your Answer:\n {st_answer}\n " )
+    st.write( f"**Question:** {sys_qn}\n " )
+    st.write( f"**Your Answer:**\n {st_answer}\n " )
     st.write_stream(stream)
 
 ##############################################################################30 Nov
-
-    
+  
     return
 
 
