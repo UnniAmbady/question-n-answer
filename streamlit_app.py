@@ -104,16 +104,17 @@ def Validate():
     st.write("Answer will be processed in the next version")
 ###########################################################################30 Nov
     messages =  [{"role": "user",
-                            "content": f"[Ignore Grammar and Spellingerrors].[Compare the and Comment on any Logical Errors] [Correct Answer {sys_ans}] \n\n---\n\n [Student_Ans{st_answer} ]"
+    "content": f"[Ignore Grammar and Spellingerrors].[Compare the and Comment on any Logical Errors] \
+                 [Correct Answer {sys_ans}] \n\n---\n\n [Student_Ans{st_answer} ]"
                  }]            
         
                 # Generate an answer using the OpenAI API.
-                stream = client.chat.completions.create(
+    stream = client.chat.completions.create(
                     model="gpt-4o-mini",
                     messages=messages, 
                     stream=True,
                 )
-
+    st.write_stream(stream)
 
 ##############################################################################30 Nov
 
