@@ -106,7 +106,10 @@ def Validate():
     st.write("Answer will be processed in the next version")
 ###########################################################################30 Nov
     messages =  [{"role": "user",
-    "content": f"[Ignore Grammar and Spellingerrors].[Compare the and Comment on any Logical Errors] \
+    "content": f"[Ignore Grammar and Spellingerrors]. \
+                [Respond in bullet Form as brief as possible] \
+                 [Compare the and Comment on any Logical Errors] \
+                 [Based on the logical correctness, **AWARD** a Grade  0 to 100% scale]
                  [Correct Answer {sys_ans}] \n\n---\n\n [Student_Ans{st_answer} ]"
                  }]            
         
