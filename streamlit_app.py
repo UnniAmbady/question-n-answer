@@ -27,7 +27,8 @@ st.write("Lecturer to Upload a document. "
 if st.checkbox("Agile Approach"):
     # Display a popup-like message
     st.warning("This software is being developed using an Agile approach. \
-    \nDevelopment will proceed in stages. \nNext the answer to be graded in future versions.")
+    \nDevelopment will proceed in stages. \
+    \nNext the answer to be graded in future versions.")
 hide_ans =0
 if st.checkbox("Hide Answer"):
     hide_ans =1
