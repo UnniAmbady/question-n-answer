@@ -102,6 +102,22 @@ def Validate():
     st_answer = st.session_state.st_answer
     #to do 28 Nov 2024
     st.write("Answer will be processed in the next version")
+###########################################################################30 Nov
+    messages =  [{"role": "user",
+                            "content": f"[Ignore Grammar and Spellingerrors].[Compare the and Comment on any Logical Errors] [Correct Answer {sys_ans}] \n\n---\n\n [Student_Ans{st_answer} ]"
+                 }]            
+        
+                # Generate an answer using the OpenAI API.
+                stream = client.chat.completions.create(
+                    model="gpt-4o-mini",
+                    messages=messages, 
+                    stream=True,
+                )
+
+
+##############################################################################30 Nov
+
+    
     return
 
 
@@ -157,7 +173,7 @@ else:
             # Generate an answer using the OpenAI API.
             stream = client.chat.completions.create(
                 model="gpt-4o-mini",
-                messages=messages,
+                messages=messages, 
                 stream=True,
             )
     
