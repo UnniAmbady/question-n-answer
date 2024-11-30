@@ -117,7 +117,7 @@ def Validate():
     stream = client.chat.completions.create(
                     model="gpt-4o-mini",
                     messages=messages, 
-                    temperature=60,  # Added temperature parameter.
+                    temperature= 0.6,  # Added temperature parameter.
                     stream=True,
                 )
     st.write( f"**Question:** {sys_qn}\n " )
