@@ -114,6 +114,7 @@ def Validate():
                     messages=messages, 
                     stream=True,
                 )
+    st.write( f"Your Answer:\n {st_answer}\n " )
     st.write_stream(stream)
 
 ##############################################################################30 Nov
